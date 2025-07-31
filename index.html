@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The BROWN HOUSE | Donald J Dump</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;700;900&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background: white;
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden; 
+        }
+        
+        .top-header {
+            background: #141f4d;
+            color: white;
+            padding: 15px 0;
+            position: relative;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            z-index: 1001; 
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        
+        .president-title {
+            font-family: 'Merriweather', serif;
+            font-weight: 700;
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .logo-container {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .logo-link {
+            text-decoration: none;
+            color: white;
+            font-family: 'Merriweather', serif;
+            font-weight: 900;
+            font-size: 32px;
+            display: flex;
+            align-items: center;
+            letter-spacing: -0.5px;
+        }
+        
+        .logo-link span {
+            font-weight: 300;
+            font-size: 26px;
+            margin-right: 5px;
+        }
+        
+        .brown-text {
+            color: #8B4513;
+        }
+
+        .header-right-content {
+            display: flex;
+            align-items: center;
+        }
+
+        .house-icon {
+            height: 40px;
+            margin-left: 15px;
+        }
+        
+        .content-area {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+        
+        .title {
+            font-family: 'Merriweather', serif;
+            font-size: 42px;
+            color: #141f4d;
+            margin-bottom: 30px;
+            font-weight: 900;
+        }
+        
+        .subtitle {
+            font-size: 24px;
+            color: #666;
+            margin-bottom: 25px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .signature {
+            font-family: 'Merriweather', serif;
+            font-size: 28px;
+            color: #8B4513;
+            margin-top: 50px;
+            font-style: italic;
+        }
+        
+        .disclaimer {
+            margin-top: 80px;
+            padding: 20px;
+            background: #f8f8f8;
+            border-radius: 8px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .gold-bar {
+            height: 4px;
+            background: linear-gradient(to right, #141f4d, #d4af37, #141f4d);
+            width: 100%;
+            margin: 20px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .logo-container {
+                position: static;
+                transform: none;
+                order: 1;
+                gap: 10px;
+            }
+            
+            .president-title {
+                order: 2;
+                font-size: 16px;
+            }
+             .logo-link {
+                font-size: 28px;
+            }
+
+            .logo-link span {
+                font-size: 22px;
+            }
+            
+            .header-right-content {
+                order: 3;
+                justify-content: center;
+            }
+            
+            .title {
+                font-size: 32px;
+            }
+            
+            .subtitle {
+                font-size: 18px;
+            }
+
+            .content-area {
+                margin: 20px auto;
+            }
+
+            .disclaimer {
+                margin-top: 40px;
+            }
+        }
+
+        #game-container {
+            width: 100%;
+            height: 60vh;
+            min-height: 300px;
+            max-height: 800px;
+            background-color: white;
+            position: relative;
+            margin: 0 auto;
+            overflow: hidden; 
+        }
+
+        #man-container {
+            position: absolute;
+            left: 0; 
+            transform: translateY(-50%);
+            top: 50%;
+        }
+
+        #man-image {
+            width: 100%;
+            height: auto;
+        }
+
+        #mouth-area {
+            position: absolute;
+        }
+
+        #food-image {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none; 
+            z-index: 1;
+             transform: translateY(-50%);
+            top: 60%;
+            right: 0;
+        }
+
+        #decoy-food-image {
+            position: absolute;
+            cursor: pointer; 
+            z-index: 2;
+            transform: translateY(-50%);
+            top: 40%;
+        }
+
+        #counter-display {
+            font-size: 28px;
+            font-family: 'Merriweather', serif;
+            font-weight: 700;
+            color: #8B4513;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header class="top-header">
+        <div class="header-container">
+            <div class="president-title">President Donald J Dump</div>
+            <div class="logo-container">
+                <a href="#" class="logo-link" rel="home" title="The BROWN HOUSE">
+                    <span>The</span>
+                    <span class="brown-text">BROWN HOUSE</span>
+                </a>
+            </div>
+            <div class="header-right-content">
+                <div class="contact-info">Press Office: (555) DUMP-NOW</div>
+                <a href="https://www.reddit.com/r/fednews/" target="_blank" rel="noopener noreferrer">
+                    <img src="house.png" alt="House Icon" class="house-icon">
+                </a>
+            </div>
+        </div>
+    </header>
+    
+    <div class="gold-bar"></div>
+    
+    <div class="content-area">
+        <h1 class="title">Feed the Man</h1>
+        <p class="subtitle">He's hungry. You know what to do.</p>
+
+        <div id="counter-display">Fed: 0</div>
+        
+        <div id="game-container">
+            <div id="man-container">
+                <img id="man-image" src="1.png" alt="Man">
+                <div id="mouth-area"></div>
+            </div>
+            <img id="decoy-food-image" src="t.png" alt="Decoy">
+            <img id="food-image" src="p.png" alt="Food">
+        </div>
+        
+        <div class="disclaimer">
+            <p><strong>DISCLAIMER:</strong> This website is a parody and is not affiliated with any real political figure or administration. The BROWN HOUSE and President Donald J Dump are fictional creations for entertainment purposes only. Any resemblance to real persons, living or dead, is purely coincidental.</p>
+        </div>
+    </div>
+    
+    <div class="gold-bar"></div>
+
+    <audio id="munch-sound" src="munch1.mp3" preload="auto"></audio>
+    <audio id="idle-sound" src="shit.mp3" preload="auto"></audio>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const title = document.querySelector('.title');
+            title.style.opacity = '0';
+            title.style.transition = 'opacity 1.5s ease-in-out';
+            
+            setTimeout(() => {
+                title.style.opacity = '1';
+            }, 300);
+
+            const manImage = document.getElementById('man-image');
+            const food = document.getElementById('food-image');
+            const decoyFood = document.getElementById('decoy-food-image');
+            const manContainer = document.getElementById('man-container');
+            const mouthArea = document.getElementById('mouth-area');
+            const counterDisplay = document.getElementById('counter-display');
+            const gameContainer = document.getElementById('game-container');
+            const munchSound = document.getElementById('munch-sound');
+            const idleSound = document.getElementById('idle-sound');
+            
+            let isDragging = false;
+            let isEating = false;
+            let isAudioUnlocked = false;
+            let offsetX, offsetY;
+            let eatingInterval, eatingTimeoutId;
+            let idleAnimationInterval = null;
+            let idleCycleTimeout = null;
+            let feedCount = 0;
+            
+            let initialFoodLeft, initialFoodTop;
+
+            function unlockAudio() {
+                if (!isAudioUnlocked) {
+                    munchSound.play().then(() => munchSound.pause()).catch(e => {});
+                    idleSound.play().then(() => idleSound.pause()).catch(e => {});
+                    isAudioUnlocked = true;
+                }
+            }
+            
+            function stopAllSounds() {
+                munchSound.pause();
+                munchSound.currentTime = 0;
+                idleSound.pause();
+                idleSound.currentTime = 0;
+            }
+
+            function setManImage(imageNumber) {
+                manImage.src = `${imageNumber}.png`;
+            }
+            
+            function stopIdleAnimation() {
+                clearInterval(idleAnimationInterval);
+                clearTimeout(idleCycleTimeout);
+                idleSound.pause();
+                idleSound.currentTime = 0;
+                idleSound.onended = null;
+            }
+
+            function runIdleCycle() {
+                if (isDragging || isEating) return;
+
+                if (isAudioUnlocked) {
+                    idleSound.currentTime = 0;
+                    idleSound.play();
+                }
+                
+                let frame = 1;
+                clearInterval(idleAnimationInterval);
+                idleAnimationInterval = setInterval(() => {
+                    frame = frame === 1 ? 2 : 1;
+                    setManImage(frame);
+                }, 150);
+
+                idleSound.onended = () => {
+                    clearInterval(idleAnimationInterval);
+                    setManImage(1);
+                    idleCycleTimeout = setTimeout(runIdleCycle, 3000);
+                };
+            }
+            
+            function resetIdleTimer() {
+                stopIdleAnimation();
+                setManImage(1);
+                if (!isDragging && !isEating) {
+                    idleCycleTimeout = setTimeout(runIdleCycle, 3000);
+                }
+            }
+            
+            function stopEatingAnimation() {
+                if (isEating) {
+                    clearInterval(eatingInterval);
+                    clearTimeout(eatingTimeoutId);
+                    stopAllSounds();
+                    isEating = false;
+                    
+                    food.style.display = 'block';
+                    food.style.opacity = '0';
+                    food.style.left = `${initialFoodLeft}px`;
+                    food.style.top = `${initialFoodTop}px`;
+                    food.style.zIndex = 1;
+                    
+                    setTimeout(() => {
+                        resetIdleTimer();
+                    }, 50);
+                }
+            }
+            
+            function resizeAndPositionElements() {
+                const containerWidth = gameContainer.offsetWidth;
+                const isMobile = containerWidth < 768;
+
+                const manWidth = isMobile ? containerWidth * 0.45 : containerWidth * 0.25;
+                manContainer.style.width = `${manWidth}px`;
+                manImage.style.height = `${manWidth}px`;
+
+                mouthArea.style.left = `${manWidth * 0.053}px`;
+                mouthArea.style.top = `${manWidth * 0.08}px`;
+                mouthArea.style.width = `${manWidth * 0.167}px`;
+                mouthArea.style.height = `${manWidth * 0.167}px`;
+
+                const foodWidth = isMobile ? containerWidth * 0.25 : containerWidth * 0.14;
+                food.style.width = `${foodWidth}px`;
+                food.style.height = `${foodWidth}px`;
+                
+                initialFoodLeft = containerWidth - foodWidth - 70;
+                initialFoodTop = (gameContainer.offsetHeight / 1.7) - (foodWidth / 2);
+
+                if (!isDragging && !isEating) {
+                    food.style.left = `${initialFoodLeft}px`;
+                    food.style.top = `${initialFoodTop}px`;
+                }
+                
+                const decoyWidth = foodWidth * 2.5;
+                decoyFood.style.width = `${decoyWidth}px`;
+                decoyFood.style.height = `${decoyWidth}px`;
+                decoyFood.style.right = '0px';
+            }
+
+
+            function startEatingAnimation() {
+                if (isEating) return;
+                
+                isEating = true; 
+                feedCount++;
+                counterDisplay.textContent = `Fed: ${feedCount}`;
+                food.style.display = 'none';
+                
+                stopIdleAnimation();
+                munchSound.play();
+                
+                let frame = 1;
+                const duration = 2500;
+                const interval = 250;
+
+                eatingInterval = setInterval(() => {
+                    if (!isEating) {
+                        clearInterval(eatingInterval);
+                        return;
+                    }
+                    setManImage(frame);
+                    frame = frame === 1 ? 5 : 1;
+                }, interval);
+
+                eatingTimeoutId = setTimeout(() => {
+                    if (isEating) {
+                        clearInterval(eatingInterval);
+                        isEating = false;
+                        food.style.display = 'block';
+                        food.style.opacity = '0';
+                        food.style.left = `${initialFoodLeft}px`;
+                        food.style.top = `${initialFoodTop}px`;
+                        food.style.zIndex = 1;
+                        resetIdleTimer();
+                    }
+                }, duration);
+            }
+            
+            function onDragStart(e) {
+                e.preventDefault();
+                unlockAudio();
+                stopEatingAnimation();
+
+                food.style.opacity = '1';
+                isDragging = true;
+                food.style.zIndex = 3; 
+                stopIdleAnimation();
+                setManImage(3);
+                
+                const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+                
+                offsetX = clientX - food.offsetLeft;
+                offsetY = clientY - food.offsetTop;
+            }
+            
+            function onDragMove(e) {
+                if (isDragging) {
+                    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
+                    const x = clientX - offsetX;
+                    const y = clientY - offsetY;
+                    food.style.left = `${x}px`;
+                    food.style.top = `${y}px`;
+
+                    const manRect = manImage.getBoundingClientRect();
+                    const distance = Math.abs(food.getBoundingClientRect().left - manRect.right);
+                    
+                    const farThreshold = gameContainer.offsetWidth * 0.6;
+                    const nearThreshold = gameContainer.offsetWidth * 0.3;
+
+                    if (distance > farThreshold) {
+                        setManImage(1);
+                    } else if (distance > nearThreshold) {
+                        setManImage(2);
+                    } else {
+                        setManImage(4);
+                    }
+                }
+            }
+            
+            function onDragEnd(e) {
+                if (isDragging) {
+                    isDragging = false;
+                    const manRect = manImage.getBoundingClientRect();
+                    const foodRect = food.getBoundingClientRect();
+
+                    const isOverlapping = !(
+                        foodRect.right < manRect.left ||
+                        foodRect.left > manRect.right ||
+                        foodRect.bottom < manRect.top ||
+                        foodRect.top > manRect.bottom
+                    );
+
+                    if (isOverlapping) {
+                        startEatingAnimation();
+                    } else {
+                        food.style.opacity = '0';
+                        food.style.left = `${initialFoodLeft}px`;
+                        food.style.top = `${initialFoodTop}px`;
+                        food.style.zIndex = 1;
+                        resetIdleTimer();
+                    }
+                }
+            }
+
+            decoyFood.addEventListener('mousedown', onDragStart);
+            document.addEventListener('mousemove', onDragMove);
+            document.addEventListener('mouseup', onDragEnd);
+
+            decoyFood.addEventListener('touchstart', onDragStart);
+            document.addEventListener('touchmove', onDragMove);
+            document.addEventListener('touchend', onDragEnd);
+
+            document.addEventListener('mouseleave', () => {
+                if (isDragging) {
+                    isDragging = false;
+                    food.style.opacity = '0';
+                    food.style.left = `${initialFoodLeft}px`;
+                    food.style.top = `${initialFoodTop}px`;
+                    food.style.zIndex = 1;
+                    resetIdleTimer();
+                }
+            });
+        
+            resizeAndPositionElements();
+            window.addEventListener('resize', resizeAndPositionElements);
+            resetIdleTimer();
+        });
+    </script>
+</body>
+</html>
